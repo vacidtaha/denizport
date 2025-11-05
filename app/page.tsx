@@ -6,8 +6,17 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+interface Project {
+  id: string;
+  name: string;
+  location: string;
+  coverImage: string;
+  slug: string;
+}
+
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [dynamicProjects, setDynamicProjects] = useState<Project[]>([]);
 
   const heroImages = [
     "/hero1.JPG",
@@ -19,6 +28,15 @@ export default function Home() {
   ];
 
   useEffect(() => {
+    // SEO Meta tags
+    document.title = "Denizport İnşaat | Konut Projeleri ve Villa Satışı";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Lüks villa projeleri ve modern konut satışı. İnşaat ve taahhüt hizmetleri ile hayalinizdeki evi gerçeğe dönüştürüyoruz. Mimari proje desteği.');
+    }
+  }, []);
+
+  useEffect(() => {
     // 8 saniyede bir fotoğraf değiştir
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => 
@@ -28,6 +46,55 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
+
+  useEffect(() => {
+    // Ana sayfa ayarlarına göre projeleri yükle
+    const loadHomePageProjects = async () => {
+      try {
+        // Ana sayfa ayarlarını oku
+        const settings = localStorage.getItem('homePageSettings');
+        let selectedIds: string[] = [];
+        
+        if (settings) {
+          const parsed = JSON.parse(settings);
+          selectedIds = parsed.selectedProjects || [];
+        }
+
+        // API'den tüm projeleri al
+        const response = await fetch('/api/projects');
+        const allProjects = await response.json();
+
+        // 4 veya daha az proje varsa → Otomatik: Tümünü göster
+        if (allProjects.length <= 4) {
+          const sortedProjects = allProjects.sort((a: Project, b: Project) => 
+            parseInt(b.id) - parseInt(a.id)
+          );
+          setDynamicProjects(sortedProjects);
+        } 
+        // 5+ proje varsa → Manuel seçim sistemi
+        else {
+          if (selectedIds.length >= 2) {
+            // Admin'in seçtiği projeleri göster
+            const selectedProjects: Project[] = [];
+            selectedIds.forEach(id => {
+              const found = allProjects.find((p: Project) => p.id === id);
+              if (found) selectedProjects.push(found);
+            });
+            setDynamicProjects(selectedProjects);
+          } else {
+            // Seçim yoksa: En yeni 4 proje
+            const latestProjects = allProjects
+              .sort((a: Project, b: Project) => parseInt(b.id) - parseInt(a.id))
+              .slice(0, 4);
+            setDynamicProjects(latestProjects);
+          }
+        }
+      } catch (error) {
+        console.error('Projeler yüklenemedi:', error);
+      }
+    };
+    loadHomePageProjects();
+  }, []);
 
   return (
     <>
@@ -112,39 +179,38 @@ export default function Home() {
 
         {/* Proje Görselleri Grid */}
         <div className="w-full bg-white py-8 sm:py-12 md:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 px-4 sm:px-6 md:px-8">
-            <Link href="/projeler/tasevler" className="relative aspect-[16/9] overflow-hidden group cursor-pointer block">
-              <Image
-                src="/tasevler-kapak.jpeg"
-                alt="Proje 1"
-                fill
-                className="object-cover"
-              />
-              <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-                style={{ background: 'radial-gradient(circle at bottom left, rgba(0,0,0,0.4) 0%, transparent 60%)' }}
-              />
-              <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-8 md:left-12 text-white z-10">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-medium mb-1">Dereköy Taş Evler</h3>
-                <p className="text-xs sm:text-sm font-medium opacity-90">Dereköy, Gümüşlük</p>
-              </div>
-            </Link>
-            <Link href="/projeler/unique" className="relative aspect-[16/9] overflow-hidden group cursor-pointer block">
-              <Image
-                src="/unique-kapak.jpeg"
-                alt="Proje 2"
-                fill
-                className="object-cover"
-              />
-              <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-                style={{ background: 'radial-gradient(circle at bottom left, rgba(0,0,0,0.4) 0%, transparent 60%)' }}
-              />
-              <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-8 md:left-12 text-white z-10">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-medium mb-1">Unique Villas</h3>
-                <p className="text-xs sm:text-sm font-medium opacity-90">Bahçelievler, Turgutreis</p>
-              </div>
-            </Link>
+          <div className={`grid grid-cols-1 ${dynamicProjects.length % 2 === 0 ? 'md:grid-cols-2' : ''} gap-0 px-4 sm:px-6 md:px-8`}>
+            {/* Seçili/Otomatik Projeler */}
+            {dynamicProjects.map((project) => (
+                <Link 
+                  key={project.id}
+                  href={`/projeler/${project.slug}`} 
+                  className="relative aspect-[16/9] overflow-hidden group cursor-pointer block"
+                >
+                  {project.coverImage.startsWith('data:') || project.coverImage.startsWith('/projects/') ? (
+                    <img
+                      src={project.coverImage}
+                      alt={project.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={project.coverImage}
+                      alt={project.name}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+                    style={{ background: 'radial-gradient(circle at bottom left, rgba(0,0,0,0.4) 0%, transparent 60%)' }}
+                  />
+                  <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-8 md:left-12 text-white z-10">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-medium mb-1">{project.name}</h3>
+                  <p className="text-xs sm:text-sm font-medium opacity-90">{project.location}</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
 

@@ -2,10 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function Hizmetler() {
+  useEffect(() => {
+    // SEO Meta tags
+    document.title = "Hizmetlerimiz | Denizport İnşaat";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'İnşaat ve taahhüt, konut satışı, villa projeleri, mimari proje danışmanlığı, iç mimarlık, restorasyon ve 3D görselleştirme hizmetleri. Her aşamada profesyonel destek.');
+    }
+  }, []);
   const hizmetler = [
     {
       id: 1,

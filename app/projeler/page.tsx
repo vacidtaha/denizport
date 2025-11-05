@@ -2,26 +2,56 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+interface Project {
+  id: string;
+  name: string;
+  location: string;
+  coverImage: string;
+  slug: string;
+}
+
 export default function Projeler() {
-  const projeler = [
-    {
-      id: 1,
-      baslik: "Dereköy Taş Evler",
-      konum: "Dereköy, Gümüşlük",
-      gorsel: "/tasevler-kapak.jpeg",
-      link: "/projeler/tasevler"
-    },
-    {
-      id: 2,
-      baslik: "Unique Villas",
-      konum: "Bahçelievler, Turgutreis",
-      gorsel: "/unique-kapak.jpeg",
-      link: "/projeler/unique"
+  const [dynamicProjects, setDynamicProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    // SEO Meta tags
+    document.title = "Konut Projelerimiz | Denizport İnşaat";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Denizport İnşaat konut ve villa projeleri. Satılık lüks villalar, modern konutlar ve özel yaşam alanları. Bodrum ve çevresinde kaliteli inşaat projeleri.');
     }
-  ];
+  }, []);
+
+  useEffect(() => {
+    // API'den projeleri yükle
+    const loadProjects = async () => {
+      try {
+        const response = await fetch('/api/projects');
+        const data = await response.json();
+        // En yeni projeler önce (id'ye göre ters sıralama)
+        const sortedProjects = data.sort((a: Project, b: Project) => 
+          parseInt(b.id) - parseInt(a.id)
+        );
+        setDynamicProjects(sortedProjects);
+      } catch (error) {
+        console.error('Projeler yüklenemedi:', error);
+      }
+    };
+    loadProjects();
+  }, []);
+
+  // Dinamik projeleri dönüştür
+  const allProjects = dynamicProjects.map(project => ({
+    id: project.id,
+    baslik: project.name,
+    konum: project.location,
+    gorsel: project.coverImage,
+    link: `/projeler/${project.slug}`
+  }));
 
   return (
     <>
@@ -52,17 +82,25 @@ export default function Projeler() {
         {/* Projeler Grid - Ana Sayfadaki Gibi */}
         <div className="w-full bg-white py-8 sm:py-12 md:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 px-4 sm:px-6 md:px-8">
-            {projeler.map((proje) => {
+            {allProjects.map((proje) => {
               const content = (
                 <div className="relative aspect-[16/9] overflow-hidden group cursor-pointer">
                   {proje.gorsel ? (
                     <>
-                      <Image
-                        src={proje.gorsel}
-                        alt={proje.baslik}
-                        fill
-                        className="object-cover"
-                      />
+                      {proje.gorsel.startsWith('data:') ? (
+                        <img
+                          src={proje.gorsel}
+                          alt={proje.baslik}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <Image
+                          src={proje.gorsel}
+                          alt={proje.baslik}
+                          fill
+                          className="object-cover"
+                        />
+                      )}
                       <div 
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
                         style={{ background: 'radial-gradient(circle at bottom left, rgba(0,0,0,0.4) 0%, transparent 60%)' }}

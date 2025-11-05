@@ -1,0 +1,17 @@
+{
+  "name": "Denizport İnşaat",
+  "short_name": "Denizport",
+  "description": "Konut Projeleri, Villa Satışı ve İnşaat Hizmetleri",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a0508",
+  "icons": [
+    {
+      "src": "/icon.jpg",
+      "sizes": "any",
+      "type": "image/jpeg"
+    }
+  ]
+}
+

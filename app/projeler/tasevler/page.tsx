@@ -38,6 +38,15 @@ export default function TasevlerDetay() {
   };
 
   useEffect(() => {
+    // SEO Meta tags
+    document.title = "Dereköy Taş Evler - Satılık Villa Projeleri | Denizport İnşaat";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Dereköy Taş Evler satılık villa projeleri - Yatay mimari, taş dokular ve geniş cam yüzeylerle lüks yaşam alanı. Daire ve dublex seçenekleri. Dereköy, Gümüşlük, Bodrum.');
+    }
+  }, []);
+
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!lightboxOpen) return;
       if (e.key === 'Escape') closeLightbox();
@@ -203,11 +212,11 @@ export default function TasevlerDetay() {
                   {/* Teknik Bilgiler Grid */}
                   <div className="grid grid-cols-2 gap-4 md:gap-x-8 md:gap-y-5">
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">BRÜT ALAN</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">BRÜT ALAN (m²)</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].brutAlan}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">NET ALAN</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">NET ALAN (m²)</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].netAlan}</p>
                     </div>
                     <div>
@@ -223,11 +232,11 @@ export default function TasevlerDetay() {
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].banyo}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">TERAS</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">TERAS (m²)</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].teras}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">BAHÇE</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">BAHÇE (m²)</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].bahce}</p>
                     </div>
                     <div>
@@ -275,40 +284,31 @@ export default function TasevlerDetay() {
           </div>
         </div>
 
-        {/* Üçüncü Bölüm - Proje Galerisi (Mozaik) */}
-        <div className="w-full bg-white" style={{ paddingTop: 'clamp(60px, 10vh, 100px)', paddingBottom: 'clamp(60px, 10vh, 120px)' }}>
-          <div className="flex justify-center w-full px-4 sm:px-6 md:px-8">
-            <div className="max-w-7xl w-full">
-              {/* Başlık */}
-              <div className="mb-8 md:mb-12 pl-4 sm:pl-6 md:pl-8">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight">Proje Galerisi</h2>
-              </div>
+        {/* Proje Galerisi */}
+        <div className="w-full bg-white" style={{ padding: '80px 24px' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            {/* Başlık */}
+            <h2 className="text-3xl md:text-4xl font-light" style={{ marginBottom: '48px' }}>
+              Proje Galerisi
+            </h2>
 
-              {/* Mozaik Grid - Masonry Düzen */}
-              <div 
-                className="columns-1 sm:columns-2"
-                style={{ columnGap: '1rem', rowGap: '1rem' }}
-              >
-                {galleryImages.map((image, index) => (
-                  <div 
-                    key={index}
-                    onClick={() => openLightbox(index)}
-                    className={`relative overflow-hidden break-inside-avoid mb-0 cursor-pointer ${
-                      index === 0 || index === 3 || index === 6 ? 'aspect-[4/5]' :
-                      index === 1 || index === 4 ? 'aspect-[5/4]' :
-                      'aspect-square'
-                    }`}
-                    style={{ marginBottom: '1rem' }}
-                  >
-                    <Image
-                      src={image}
-                      alt="Taş Evler Detay"
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                ))}
-              </div>
+            {/* Galeri Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: '16px' }}>
+              {galleryImages.map((image, index) => (
+                <div 
+                  key={index}
+                  onClick={() => openLightbox(index)}
+                  className="cursor-pointer overflow-hidden"
+                >
+                  <Image
+                    src={image}
+                    alt="Taş Evler Detay"
+                    width={1000}
+                    height={1000}
+                    className="w-full h-auto hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>

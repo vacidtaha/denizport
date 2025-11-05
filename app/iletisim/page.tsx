@@ -8,6 +8,15 @@ export default function Iletisim() {
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // SEO Meta tags
+    document.title = "İletişim | Denizport İnşaat";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Denizport İnşaat ile iletişime geçin. Konut ve villa projelerimiz, satılık konutlar ve inşaat hizmetleri hakkında bilgi almak için bizimle görüşün.');
+    }
+  }, []);
+
+  useEffect(() => {
     // Google Maps script yükleme
     const script = document.createElement('script');
     script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBw_K3Ih9_EhSWwk4pF6mfvfhjxo7R8Gs8&callback=initMap`;
