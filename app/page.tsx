@@ -187,7 +187,7 @@ export default function Home() {
                   href={`/projeler/${project.slug}`} 
                   className="relative aspect-[16/9] overflow-hidden group cursor-pointer block"
                 >
-                  {project.coverImage.startsWith('data:') || project.coverImage.startsWith('/projects/') ? (
+                  {project.coverImage.startsWith('/projects/') || project.coverImage.startsWith('data:') ? (
                     <img
                       src={project.coverImage}
                       alt={project.name}

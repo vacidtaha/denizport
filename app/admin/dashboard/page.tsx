@@ -271,11 +271,11 @@ export default function AdminDashboard() {
       const slug = createSlug(projectName);
 
       // Kapak fotoğrafını sıkıştır ve base64'e çevir
-      const coverImageBase64 = await compressAndConvertImage(coverImage, 1920);
+      const coverImageBase64 = await compressAndConvertImage(coverImage, 1600);
 
       // Galeri fotoğraflarını sıkıştır ve base64'e çevir (daha küçük boyut)
       const galleryBase64 = await Promise.all(
-        galleryImages.map(file => compressAndConvertImage(file, 1200))
+        galleryImages.map(file => compressAndConvertImage(file, 1000))
       );
 
       // Yeni proje objesi
@@ -374,8 +374,8 @@ export default function AdminDashboard() {
           const ctx = canvas.getContext('2d');
           ctx?.drawImage(img, 0, 0, width, height);
 
-          // JPEG olarak sıkıştır (kalite: 0.7)
-          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
+          // JPEG olarak sıkıştır (kalite: 0.6 - daha küçük dosya boyutu)
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6);
           resolve(compressedBase64);
         };
         img.onerror = reject;

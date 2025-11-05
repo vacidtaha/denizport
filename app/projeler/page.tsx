@@ -87,7 +87,7 @@ export default function Projeler() {
                 <div className="relative aspect-[16/9] overflow-hidden group cursor-pointer">
                   {proje.gorsel ? (
                     <>
-                      {proje.gorsel.startsWith('data:') ? (
+                      {proje.gorsel.startsWith('/projects/') || proje.gorsel.startsWith('data:') ? (
                         <img
                           src={proje.gorsel}
                           alt={proje.baslik}
