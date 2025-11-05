@@ -124,11 +124,6 @@ export default function Iletisim() {
                 <h3 className="text-xs sm:text-sm font-light tracking-wide text-gray-500 mb-3 md:mb-4 uppercase">İletişim</h3>
                 <div className="space-y-1">
                   <p className="text-base md:text-lg font-light text-gray-900">
-                    <a href="mailto:info@denizport.com" className="hover:text-gray-600 transition-colors">
-                      info@denizport.com
-                    </a>
-                  </p>
-                  <p className="text-base md:text-lg font-light text-gray-900">
                     <a href="tel:+902323739012" className="hover:text-gray-600 transition-colors">
                       0232 373 90 12
                     </a>
@@ -136,6 +131,11 @@ export default function Iletisim() {
                   <p className="text-base md:text-lg font-light text-gray-900">
                     <a href="tel:+905326303111" className="hover:text-gray-600 transition-colors">
                       0532 630 31 11
+                    </a>
+                  </p>
+                  <p className="text-base md:text-lg font-light text-gray-900">
+                    <a href="mailto:info@denizportinsaat.com" className="hover:text-gray-600 transition-colors">
+                      info@denizportinsaat.com
                     </a>
                   </p>
                 </div>

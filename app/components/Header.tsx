@@ -16,6 +16,7 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
   const isContactPage = pathname === '/iletisim';
   const isServiceDetailPage = pathname.startsWith('/hizmetler/') && pathname !== '/hizmetler';
   const isServicesMainPage = pathname === '/hizmetler';
+  const isProjectsMainPage = pathname === '/projeler';
 
   useEffect(() => {
     if (alwaysVisible) return;
@@ -36,7 +37,7 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
       {!sidebarOpen && (
         <div
           className={`hidden md:block fixed top-0 left-0 right-0 h-20 z-[50] transition-all duration-500 ease-in-out pointer-events-none ${
-            (scrolled && !isServicesMainPage)
+            (scrolled && !isServicesMainPage && !isProjectsMainPage)
               ? "bg-white/95 backdrop-blur-md"
               : "bg-transparent"
           }`}
@@ -50,15 +51,15 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
           className="absolute md:fixed top-3 sm:top-4 left-4 md:left-12 z-[70] flex items-center justify-center w-12 sm:w-14 h-12 sm:h-14 rounded-full hover:bg-white/10 transition-all duration-300 pointer-events-auto"
         >
         <div className="flex flex-col gap-[5px]">
-          <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
-          <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
-          <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
+          <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage && !isProjectsMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
+          <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage && !isProjectsMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
+          <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage && !isProjectsMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
         </div>
         </button>
       )}
 
       {/* Logo - Ortada SCROLL YAPINCA BELİRİYOR */}
-      {!sidebarOpen && scrolled && !isServicesMainPage && (
+      {!sidebarOpen && scrolled && !isServicesMainPage && !isProjectsMainPage && (
         <div className="hidden md:flex fixed top-0 left-1/2 -translate-x-1/2 h-20 z-[70] items-center px-4 pointer-events-none">
           <Image
             src="/denizport.png"
@@ -78,7 +79,7 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
         <button
           onClick={() => setLanguage('tr')}
           className={`transition-all duration-300 ${
-            isContactPage || isServiceDetailPage ? 'text-black' : (scrolled && !isServicesMainPage) ? 'text-black' : 'text-white'
+            isContactPage || isServiceDetailPage ? 'text-black' : (scrolled && !isServicesMainPage && !isProjectsMainPage) ? 'text-black' : 'text-white'
           }`}
         >
           TR
@@ -86,7 +87,7 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
         <span className={`${
           isContactPage || isServiceDetailPage
             ? 'text-gray-400'
-            : (scrolled && !isServicesMainPage) ? 'text-gray-300' : 'text-white/40'
+            : (scrolled && !isServicesMainPage && !isProjectsMainPage) ? 'text-gray-300' : 'text-white/40'
         }`}>/</span>
         <button
           onClick={() => setLanguage('en')}
@@ -95,7 +96,7 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
               ? language === 'en'
                 ? 'text-black'
                 : 'text-gray-400 hover:text-gray-600'
-              : (scrolled && !isServicesMainPage)
+              : (scrolled && !isServicesMainPage && !isProjectsMainPage)
               ? language === 'en'
                 ? 'text-black'
                 : 'text-gray-400 hover:text-gray-600'
