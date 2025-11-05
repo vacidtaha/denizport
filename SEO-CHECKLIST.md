@@ -36,7 +36,7 @@
 - Change frequency ayarlandı
 - Last modified tarihleri otomatik
 
-**Erişim:** `https://denizport.com.tr/sitemap.xml`
+**Erişim:** `https://denizportinsaat.com/sitemap.xml`
 
 ### 🤖 3. Robots.txt (app/robots.ts)
 
@@ -46,7 +46,7 @@
 - ✅ API yolları engellendi (/api/)
 - ✅ Sitemap linki eklendi
 
-**Erişim:** `https://denizport.com.tr/robots.txt`
+**Erişim:** `https://denizportinsaat.com/robots.txt`
 
 ### 📊 4. Structured Data (JSON-LD)
 
@@ -65,7 +65,7 @@
 **Ana Sayfa:**
 ```
 Denizport İnşaat | Konut Projeleri ve Villa Satışı
-https://denizport.com.tr
+https://denizportinsaat.com
 Lüks villa projeleri ve modern konut satışı. İnşaat ve taahhüt 
 hizmetleri ile hayalinizdeki evi gerçeğe dönüştürüyoruz.
 
@@ -77,7 +77,7 @@ Sitelinks (Alt Bağlantılar):
 **Proje Sayfası:**
 ```
 Dereköy Taş Evler - Satılık Villa Projeleri | Denizport İnşaat
-https://denizport.com.tr/projeler/tasevler
+https://denizportinsaat.com/projeler/tasevler
 Dereköy Taş Evler satılık villa projeleri - Yatay mimari, taş 
 dokular ve geniş cam yüzeylerle lüks yaşam alanı. Daire ve...
 ```
@@ -102,21 +102,22 @@ dokular ve geniş cam yüzeylerle lüks yaşam alanı. Daire ve...
 
 **Adımlar:**
 1. https://search.google.com/search-console adresine gidin
-2. "URL öneki" ile site ekleyin: `https://denizport.com.tr`
+2. "URL öneki" ile site ekleyin: `https://denizportinsaat.com`
 3. Doğrulama kodu alın
 4. `app/layout.tsx` dosyasında şu satırı güncelleyin:
    ```typescript
    google: 'BURAYA-DOĞRULAMA-KODU'
    ```
 5. Siteyi yayınlayın
-6. Search Console'da "Sitemap Gönder" → `https://denizport.com.tr/sitemap.xml`
+6. Search Console'da "Sitemap Gönder" → `https://denizportinsaat.com/sitemap.xml`
 
 ### 2. Domain Güncelleme
 
-**Şu dosyalarda `denizport.com.tr` yerine gerçek domain yazın:**
-- `app/layout.tsx` (metadataBase)
-- `app/sitemap.ts` (baseUrl)
-- `app/robots.ts` (sitemap URL)
+**✅ TAMAMLANDI - Domain denizportinsaat.com olarak ayarlandı:**
+- ✅ `app/layout.tsx` (metadataBase)
+- ✅ `app/sitemap.ts` (baseUrl)
+- ✅ `app/robots.ts` (sitemap URL)
+- ✅ `app/components/StructuredData.tsx` (JSON-LD)
 
 ### 3. Sosyal Medya (Opsiyonel)
 

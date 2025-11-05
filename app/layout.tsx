@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://denizport.com.tr'),
+  metadataBase: new URL('https://denizportinsaat.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: "Denizport İnşaat | Konut Projeleri ve Villa Satışı",
     description: "Modern ve lüks konut projeleri ile hayalinizdeki evi gerçeğe dönüştürüyoruz. Villa satışı, inşaat ve taahhüt hizmetleri. Mimari proje desteği.",
-    url: 'https://denizport.com.tr',
+    url: 'https://denizportinsaat.com',
     siteName: 'Denizport İnşaat',
     locale: 'tr_TR',
     type: 'website',

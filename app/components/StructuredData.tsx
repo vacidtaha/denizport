@@ -10,8 +10,8 @@ export default function StructuredData() {
       "@type": "RealEstateAgent",
       "name": "Denizport İnşaat",
       "description": "Konut projeleri, villa satışı, inşaat ve taahhüt hizmetleri. Mimari proje danışmanlığı.",
-      "url": "https://denizport.com.tr",
-      "logo": "https://denizport.com.tr/denizport.png",
+      "url": "https://denizportinsaat.com",
+      "logo": "https://denizportinsaat.com/logo.jpg",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "TR",
@@ -36,9 +36,9 @@ export default function StructuredData() {
       "@context": "https://schema.org",
       "@type": "GeneralContractor",
       "name": "Denizport İnşaat",
-      "image": "https://denizport.com.tr/denizport.png",
-      "@id": "https://denizport.com.tr",
-      "url": "https://denizport.com.tr",
+      "image": "https://denizportinsaat.com/logo.jpg",
+      "@id": "https://denizportinsaat.com",
+      "url": "https://denizportinsaat.com",
       "priceRange": "$$$$",
       "address": {
         "@type": "PostalAddress",

@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin/', '/api/'],
       },
     ],
-    sitemap: 'https://denizport.com.tr/sitemap.xml',
+    sitemap: 'https://denizportinsaat.com/sitemap.xml',
   };
 }
 
