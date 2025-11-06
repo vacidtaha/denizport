@@ -1,9 +1,12 @@
 "use client";
 
+import { useLanguage } from "../../contexts/LanguageContext";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 export default function IcMimarlik() {
+  const { t } = useLanguage();
+  
   return (
     <>
       <Header alwaysVisible={true} />
@@ -23,14 +26,13 @@ export default function IcMimarlik() {
                     className="inline-flex items-center gap-2 text-xs md:text-sm font-light text-gray-500 hover:text-black transition-colors mb-8 md:mb-12"
                   >
                     <span>←</span>
-                    <span>Geri</span>
+                    <span>{t('service.back')}</span>
                   </a>
                   <p className="text-xs font-light tracking-[0.3em] uppercase mb-4 md:mb-6 text-gray-400">
-                    HİZMETLER
+                    {t('service.tag')}
                   </p>
                   <h1 className="text-3xl sm:text-4xl md:text-6xl font-light text-black leading-tight">
-                    İç Mimarlık<br />
-                    Ve Dekorasyon
+                    {t('services.ic.title')}
                   </h1>
                 </div>
               </div>
@@ -38,27 +40,27 @@ export default function IcMimarlik() {
               {/* Sağ Taraf - Açıklama */}
               <div className="w-full md:w-1/2" style={{ paddingLeft: 'clamp(16px, 4vw, 0px)', paddingRight: 'clamp(16px, 4vw, 0px)' }}>
                 <p className="text-sm sm:text-base font-light text-gray-700 leading-loose mb-6 md:mb-8">
-                  Denizport İç Mimarlık ve Dekorasyon hizmetleri ile yaşam alanlarınızı kişiliğinizi yansıtan, estetik ve fonksiyonel mekanlara dönüştürüyoruz. Her proje için özgün konseptler geliştiriyor, mekan kullanımını optimize ederken görsel zenginlik ve konfor standartlarını en üst seviyede tutuyoruz. Modern tasarım anlayışını zamansız estetikle birleştirerek, size özel iç mekan çözümleri sunuyoruz.
+                  {t('ic.p1')}
                 </p>
                 
                 <p className="text-sm sm:text-base font-light text-gray-700 leading-loose mb-6 md:mb-8">
-                  İç mimari projelerimiz, detaylı mekan analizi ile başlar. Kullanıcı profili, yaşam alışkanlıkları, işlevsel gereksinimler ve estetik beklentiler titizlikle değerlendirilir. Mobilya yerleşim planlarından aydınlatma tasarımına, renk paletinden doku seçimlerine kadar her detay bir bütünlük içinde kurgulanır. Ergonomi, akustik konfor, ısıl konfor ve havalandırma gibi teknik parametreler göz önünde bulundurularak, yaşanabilir ve sağlıklı mekanlar tasarlıyoruz.
+                  {t('ic.p2')}
                 </p>
 
                 <p className="text-sm sm:text-base font-light text-gray-700 leading-loose mb-6 md:mb-8">
-                  Malzeme seçiminde kalite, dayanıklılık ve estetik uyumu ön planda tutuyoruz. Doğal taş, ahşap, metal, cam ve tekstil ürünlerini ustalıkla bir araya getirerek özgün doku kombinasyonları oluşturuyoruz. Özel üretim mobilyalar, tasarım aydınlatma elemanları ve dekoratif aksesuarlar ile mekanlarınıza karakter kazandırıyoruz. Her materyal, hem görsel değeri hem de uzun ömürlülüğü gözetilerek seçilir.
+                  {t('ic.p3')}
                 </p>
                 
                 <p className="text-sm sm:text-base font-light text-gray-700 leading-loose mb-6 md:mb-8">
-                  Aydınlatma tasarımı, iç mimarlık projelerimizin en kritik unsurlarından biridir. Genel aydınlatma, görev aydınlatması, vurgu aydınlatması ve dekoratif aydınlatma katmanlarını dengeli bir şekilde planlıyoruz. Doğal ışık kullanımını maksimize ederken, yapay aydınlatmada enerji verimliliği ve atmosfer yaratma hedeflerimizi birleştiriyoruz. Akıllı aydınlatma sistemleri ile mekanlarınızda farklı senaryolar oluşturabilirsiniz.
+                  {t('ic.p4')}
                 </p>
                 
                 <p className="text-sm sm:text-base font-light text-gray-700 leading-loose mb-6 md:mb-8">
-                  Renk psikolojisi ve mekan algısı konusundaki uzmanlığımızla, mekanlarınıza istediğiniz ruhu katıyoruz. Sakin ve dinlendirici atmosferlerden enerjik ve ilham verici ortamlara kadar geniş bir yelpazede tasarımlar gerçekleştiriyoruz. Duvar kaplamaları, zemin döşemeleri, tavan tasarımları ve özel yapım detaylar ile mekanlarınızı özgün kılıyoruz.
+                  {t('ic.p5')}
                 </p>
                 
                 <p className="text-sm sm:text-base font-light text-gray-700 leading-loose">
-                  Uygulama sürecinde, seçilen tüm ürünlerin tedariki, imalat takibi ve montaj koordinasyonunu sağlıyoruz. Deneyimli uygulama ekiplerimiz ve kaliteli iş ortaklarımızla, tasarımın eksiksiz bir şekilde hayata geçmesini garanti ediyoruz. Proje teslim sonrası bakım ve revizyon desteği ile de yanınızda olmaya devam ediyoruz.
+                  {t('ic.p6')}
                 </p>
               </div>
 
@@ -80,11 +82,10 @@ export default function IcMimarlik() {
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8 md:gap-0">
             <div className="max-w-2xl">
               <p className="text-white/60 text-xs font-light tracking-[0.3em] uppercase mb-4 md:mb-6">
-                BİRLİKTE ÇALIŞALIM
+                {t('service.cta.tag')}
               </p>
               <h3 className="text-white text-2xl sm:text-3xl md:text-5xl font-light leading-tight">
-                Hayalinizdeki projeyi<br />
-                birlikte gerçeğe dönüştürelim
+                {t('service.cta.title')}
               </h3>
             </div>
             <a 
@@ -92,7 +93,7 @@ export default function IcMimarlik() {
               className="group inline-flex items-center gap-3 text-white text-xs sm:text-sm md:text-base"
             >
               <span className="font-light tracking-wide relative">
-                İletişime Geçin
+                {t('service.cta.button')}
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transition-all duration-300 group-hover:w-0"></span>
               </span>
               <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>

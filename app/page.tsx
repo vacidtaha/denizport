@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useLanguage } from "./contexts/LanguageContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -15,6 +16,7 @@ interface Project {
 }
 
 export default function Home() {
+  const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [dynamicProjects, setDynamicProjects] = useState<Project[]>([]);
 
@@ -141,10 +143,7 @@ export default function Home() {
           <div className="flex justify-center w-full px-4 sm:px-6 md:px-8">
             <div className="max-w-2xl md:max-w-3xl" style={{ paddingLeft: 'clamp(16px, 4vw, 0px)' }}>
               <p className="text-left text-sm sm:text-base md:text-base text-black leading-relaxed md:leading-loose font-normal pb-32">
-                Denizport, modern mimari anlayışın estetikle buluştuğu noktada, lüks yaşam alanları tasarlıyor. 
-                Şehrin gürültüsünden uzak, doğayla iç içe, her detayın özenle düşünüldüğü projelerimizle 
-                yaşam standartlarınızı yükseltiyoruz. Konfor, zarafet ve yenilikçi tasarımın bir araya geldiği 
-                mekânlarda, hayalinizdeki evi gerçeğe dönüştürüyoruz.
+                {t('home.about.text')}
               </p>
             </div>
           </div>
@@ -155,11 +154,10 @@ export default function Home() {
           <div className="flex justify-start w-full">
             <div className="max-w-4xl">
               <p className="text-white text-sm font-light tracking-wide mb-6">
-                PROJELER
+                {t('home.projects.tag')}
               </p>
               <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-light leading-tight">
-                Her projede mükemmellik<br />
-                arayışıyla tasarlanmış detaylar.
+                {t('home.projects.title')}
               </h2>
               
               {/* Tümünü Gör Butonu */}
@@ -168,7 +166,7 @@ export default function Home() {
                 className="group inline-flex items-center gap-3 text-xs sm:text-sm font-light tracking-wider uppercase transition-all duration-300 text-white mt-8"
               >
                 <span className="relative">
-                  Tüm Projeler
+                  {t('home.projects.cta')}
                   <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transition-all duration-300 group-hover:w-0"></span>
                 </span>
                 <span className="text-lg">→</span>
@@ -219,11 +217,10 @@ export default function Home() {
           <div className="flex justify-start w-full">
             <div className="max-w-4xl">
               <p className="text-white text-sm font-light tracking-wide mb-6">
-                HİZMETLER
+                {t('home.services.tag')}
               </p>
               <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-light leading-tight mb-8 md:mb-12">
-                Her aşamada profesyonel destek,<br />
-                kusursuz sonuçlar
+                {t('home.services.title')}
               </h2>
               
               {/* Tümünü Gör Butonu */}
@@ -232,7 +229,7 @@ export default function Home() {
                 className="group inline-flex items-center gap-3 text-xs sm:text-sm font-light tracking-wider uppercase transition-all duration-300 text-white"
               >
                 <span className="relative">
-                  Tüm Hizmetlerimiz
+                  {t('home.services.cta')}
                   <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transition-all duration-300 group-hover:w-0"></span>
                 </span>
                 <span className="text-lg">→</span>
@@ -260,10 +257,10 @@ export default function Home() {
                   {/* Metin - Alt Yarı */}
                   <div className="py-8 sm:py-10 md:py-12 flex-1 flex flex-col justify-center" style={{ paddingLeft: 'clamp(20px, 5vw, 60px)', paddingRight: 'clamp(20px, 5vw, 60px)' }}>
                     <h3 className="text-xl sm:text-2xl md:text-3xl font-normal mb-4 md:mb-6 text-black leading-tight">
-                      Mimari Proje<br />Ve Tasarım
+                      {t('services.mimari.title')}
                     </h3>
                     <p className="text-sm sm:text-base font-normal text-gray-600 leading-loose">
-                      Modern ve işlevsel mimari çözümlerle hayalinizdeki projeyi tasarlıyoruz.
+                      {t('services.mimari.desc')}
                     </p>
                   </div>
                 </Link>
@@ -282,10 +279,10 @@ export default function Home() {
                   {/* Metin - Alt Yarı */}
                   <div className="py-8 sm:py-10 md:py-12 flex-1 flex flex-col justify-center" style={{ paddingLeft: 'clamp(20px, 5vw, 60px)', paddingRight: 'clamp(20px, 5vw, 60px)' }}>
                     <h3 className="text-xl sm:text-2xl md:text-3xl font-normal mb-4 md:mb-6 text-black leading-tight">
-                      İç Mimarlık<br />Ve Dekorasyon
+                      {t('services.ic.title')}
                     </h3>
                     <p className="text-sm sm:text-base font-normal text-gray-600 leading-loose">
-                      Yaşam alanlarınızı estetik ve konforla buluşturuyoruz.
+                      {t('services.ic.desc')}
                     </p>
                   </div>
                 </Link>
@@ -304,10 +301,10 @@ export default function Home() {
                   {/* Metin - Alt Yarı */}
                   <div className="py-8 sm:py-10 md:py-12 flex-1 flex flex-col justify-center" style={{ paddingLeft: 'clamp(20px, 5vw, 60px)', paddingRight: 'clamp(20px, 5vw, 60px)' }}>
                     <h3 className="text-xl sm:text-2xl md:text-3xl font-normal mb-4 md:mb-6 text-black leading-tight">
-                      İnşaat Ve Taahhüt<br />Hizmetleri
+                      {t('services.insaat.title')}
                     </h3>
                     <p className="text-sm sm:text-base font-normal text-gray-600 leading-loose">
-                      Profesyonel ekip ve kaliteli malzeme ile güvenilir inşaat süreçleri.
+                      {t('services.insaat.desc')}
                     </p>
                   </div>
                 </Link>

@@ -3,10 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function Hizmetler() {
+  const { t } = useLanguage();
+  
   useEffect(() => {
     // SEO Meta tags
     document.title = "Hizmetlerimiz | Denizport İnşaat";
@@ -15,44 +18,6 @@ export default function Hizmetler() {
       metaDescription.setAttribute('content', 'İnşaat ve taahhüt, konut satışı, villa projeleri, mimari proje danışmanlığı, iç mimarlık, restorasyon ve 3D görselleştirme hizmetleri. Her aşamada profesyonel destek.');
     }
   }, []);
-  const hizmetler = [
-    {
-      id: 1,
-      baslik: "Mimari Proje Ve Tasarım",
-      aciklama: "Modern ve işlevsel mimari çözümlerle hayalinizdeki projeyi tasarlıyoruz.",
-      size: "large" // 2 sütun genişliğinde
-    },
-    {
-      id: 2,
-      baslik: "İç Mimarlık Ve Dekorasyon",
-      aciklama: "Yaşam alanlarınızı estetik ve konforla buluşturuyoruz.",
-      size: "normal"
-    },
-    {
-      id: 3,
-      baslik: "İnşaat Ve Taahhüt Hizmetleri",
-      aciklama: "Profesyonel ekip ve kaliteli malzeme ile güvenilir inşaat süreçleri.",
-      size: "normal"
-    },
-    {
-      id: 4,
-      baslik: "Restorasyon Ve Yenileme",
-      aciklama: "Mevcut yapılarınıza yeni bir soluk katıyoruz.",
-      size: "normal"
-    },
-    {
-      id: 5,
-      baslik: "3D Görselleştirme Ve Modelleme",
-      aciklama: "Projenizi tamamlanmadan önce gözünüzde canlandırıyoruz.",
-      size: "tall" // Yüksek
-    },
-    {
-      id: 6,
-      baslik: "Danışmanlık Ve Proje Yönetimi",
-      aciklama: "Profesyonel danışmanlık ile projelerinizi baştan sona yönetiyoruz.",
-      size: "normal"
-    }
-  ];
 
   return (
     <>
@@ -71,11 +36,10 @@ export default function Hizmetler() {
         >
           <div className="text-center max-w-4xl px-4 sm:px-6 md:px-8">
             <p className="text-white text-xs font-light tracking-[0.3em] uppercase mb-6 md:mb-8 opacity-80">
-              HİZMETLER
+              {t('services.hero.tag')}
             </p>
             <h1 className="text-white text-3xl sm:text-4xl md:text-6xl font-light leading-tight">
-              Her aşamada profesyonel destek,<br />
-              kusursuz sonuçlar
+              {t('services.hero.title')}
             </h1>
           </div>
         </div>
@@ -95,9 +59,9 @@ export default function Hizmetler() {
                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 flex items-center z-10" style={{ paddingLeft: 'clamp(16px, 8vw, 60px)' }}>
                   <div className="text-left text-white max-w-sm">
-                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">Mimari Proje Ve Tasarım</h3>
+                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">{t('services.mimari.title')}</h3>
                     <p className="text-xs sm:text-sm font-medium opacity-90">
-                      Modern ve işlevsel mimari çözümlerle hayalinizdeki projeyi tasarlıyoruz.
+                      {t('services.mimari.desc')}
                     </p>
                   </div>
                 </div>
@@ -109,9 +73,9 @@ export default function Hizmetler() {
                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 flex items-center z-10" style={{ paddingLeft: 'clamp(16px, 8vw, 60px)' }}>
                   <div className="text-left text-white max-w-sm">
-                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">İç Mimarlık Ve Dekorasyon</h3>
+                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">{t('services.ic.title')}</h3>
                     <p className="text-xs sm:text-sm font-medium opacity-90">
-                      Yaşam alanlarınızı estetik ve konforla buluşturuyoruz.
+                      {t('services.ic.desc')}
                     </p>
                   </div>
                 </div>
@@ -123,9 +87,9 @@ export default function Hizmetler() {
                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 flex items-center z-10" style={{ paddingLeft: 'clamp(16px, 8vw, 60px)' }}>
                   <div className="text-left text-white max-w-sm">
-                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">İnşaat Ve Taahhüt Hizmetleri</h3>
+                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">{t('services.insaat.title')}</h3>
                     <p className="text-xs sm:text-sm font-medium opacity-90">
-                      Profesyonel ekip ve kaliteli malzeme ile güvenilir inşaat.
+                      {t('services.insaat.desc')}
                     </p>
                   </div>
                 </div>
@@ -137,9 +101,9 @@ export default function Hizmetler() {
                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 flex items-center z-10" style={{ paddingLeft: 'clamp(16px, 8vw, 60px)' }}>
                   <div className="text-left text-white max-w-sm">
-                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">Restorasyon Ve Yenileme</h3>
+                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">{t('services.restorasyon.title')}</h3>
                     <p className="text-xs sm:text-sm font-medium opacity-90">
-                      Mevcut yapılarınıza yeni bir soluk katıyoruz.
+                      {t('services.restorasyon.desc')}
                     </p>
                   </div>
                 </div>
@@ -151,9 +115,9 @@ export default function Hizmetler() {
                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 flex items-center z-10" style={{ paddingLeft: 'clamp(16px, 8vw, 60px)' }}>
                   <div className="text-left text-white max-w-sm">
-                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">3D Görselleştirme Ve Modelleme</h3>
+                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">{t('services.3d.title')}</h3>
                     <p className="text-xs sm:text-sm font-medium opacity-90">
-                      Projenizi tamamlanmadan önce gözünüzde canlandırıyoruz.
+                      {t('services.3d.desc')}
                     </p>
                   </div>
                 </div>
@@ -165,9 +129,9 @@ export default function Hizmetler() {
                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 flex items-center z-10" style={{ paddingLeft: 'clamp(16px, 8vw, 60px)' }}>
                   <div className="text-left text-white max-w-sm">
-                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">Danışmanlık Ve Proje Yönetimi</h3>
+                    <h3 className="text-lg sm:text-2xl md:text-3xl font-medium mb-2 md:mb-3">{t('services.danismanlik.title')}</h3>
                     <p className="text-xs sm:text-sm font-medium opacity-90">
-                      Profesyonel danışmanlıkla projelerinizi yönetiyoruz.
+                      {t('services.danismanlik.desc')}
                     </p>
                   </div>
                 </div>

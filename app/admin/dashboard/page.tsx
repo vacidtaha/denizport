@@ -24,6 +24,7 @@ interface Project {
   location: string;
   coverImage: string;
   description: string;
+  descriptionEn: string;
   types: ProjectType[];
   galleryImages: string[];
   slug: string;
@@ -42,6 +43,7 @@ export default function AdminDashboard() {
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [coverPreview, setCoverPreview] = useState<string>('');
   const [description, setDescription] = useState('');
+  const [descriptionEn, setDescriptionEn] = useState('');
   const [projectTypes, setProjectTypes] = useState<ProjectType[]>([]);
   const [galleryImages, setGalleryImages] = useState<File[]>([]);
   const [galleryPreviews, setGalleryPreviews] = useState<string[]>([]);
@@ -243,13 +245,13 @@ export default function AdminDashboard() {
   // Projeyi kaydet
   const handleSaveProject = async () => {
     // Validasyon
-    if (!projectName || !location || !coverImage || !description || galleryImages.length === 0) {
+    if (!projectName || !location || !coverImage || !description || !descriptionEn || galleryImages.length === 0) {
       alert('Lütfen tüm alanları doldurun!');
       return;
     }
 
-    if (description.length > 2000) {
-      alert('Açıklama metni 2000 karakteri geçemez!');
+    if (description.length > 2000 || descriptionEn.length > 2000) {
+      alert('Açıklama metinleri 2000 karakteri geçemez!');
       return;
     }
 
@@ -284,6 +286,7 @@ export default function AdminDashboard() {
         name: projectName,
         location: location,
         description,
+        descriptionEn,
         types: projectTypes,
         slug
       };
@@ -391,6 +394,7 @@ export default function AdminDashboard() {
     setCoverImage(null);
     setCoverPreview('');
     setDescription('');
+    setDescriptionEn('');
     setProjectTypes([]);
     setGalleryImages([]);
     setGalleryPreviews([]);
@@ -1073,6 +1077,9 @@ export default function AdminDashboard() {
                           outline: 'none'
                         }}
                       />
+                      <p style={{ fontSize: '11px', color: '#999', marginTop: '6px' }}>
+                        Bu ad hem Türkçe hem İngilizce sayfada aynı görünecek
+                      </p>
                     </div>
 
                     <div style={{ marginBottom: '24px' }}>
@@ -1093,6 +1100,9 @@ export default function AdminDashboard() {
                           outline: 'none'
                         }}
                       />
+                      <p style={{ fontSize: '11px', color: '#999', marginTop: '6px' }}>
+                        Bu lokasyon hem Türkçe hem İngilizce sayfada aynı görünecek
+                      </p>
                     </div>
 
                     <div>
@@ -1158,35 +1168,67 @@ export default function AdminDashboard() {
                       2. Proje Açıklaması
                     </h3>
                     
-                    <div>
-                      <label style={{ display: 'block', fontSize: '13px', color: '#666', marginBottom: '8px' }}>
-                        Açıklama Metni *
-                      </label>
-                      <textarea
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Proje hakkında detaylı açıklama yazın..."
-                        rows={10}
-                        style={{
-                          width: '100%',
-                          padding: '12px 16px',
-                          fontSize: '15px',
-                          border: '1px solid #e0e0e0',
-                          borderRadius: '8px',
-                          outline: 'none',
-                          resize: 'vertical',
-                          fontFamily: 'inherit',
-                          lineHeight: '1.6'
-                        }}
-                      />
-                      <p style={{ fontSize: '12px', color: description.length > 2000 ? '#dc2626' : '#999', marginTop: '8px' }}>
-                        Bu metin hero bölümünün altında görünecek. Karakter sayısı: {description.length} / 2000
-                        {description.length > 2000 && (
-                          <span style={{ color: '#dc2626', display: 'block', marginTop: '4px', fontWeight: '500' }}>
-                            ⚠️ Karakter limiti aşıldı!
-                          </span>
-                        )}
-                      </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '13px', color: '#666', marginBottom: '8px' }}>
+                          Açıklama Metni (TR) *
+                        </label>
+                        <textarea
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
+                          placeholder="Proje hakkında detaylı açıklama yazın..."
+                          rows={10}
+                          style={{
+                            width: '100%',
+                            padding: '12px 16px',
+                            fontSize: '15px',
+                            border: '1px solid #e0e0e0',
+                            borderRadius: '8px',
+                            outline: 'none',
+                            resize: 'vertical',
+                            fontFamily: 'inherit',
+                            lineHeight: '1.6'
+                          }}
+                        />
+                        <p style={{ fontSize: '12px', color: description.length > 2000 ? '#dc2626' : '#999', marginTop: '8px' }}>
+                          Karakter: {description.length} / 2000
+                          {description.length > 2000 && (
+                            <span style={{ color: '#dc2626', display: 'block', marginTop: '4px', fontWeight: '500' }}>
+                              ⚠️ Limit aşıldı!
+                            </span>
+                          )}
+                        </p>
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '13px', color: '#666', marginBottom: '8px' }}>
+                          Description (EN) *
+                        </label>
+                        <textarea
+                          value={descriptionEn}
+                          onChange={(e) => setDescriptionEn(e.target.value)}
+                          placeholder="Write detailed description about project..."
+                          rows={10}
+                          style={{
+                            width: '100%',
+                            padding: '12px 16px',
+                            fontSize: '15px',
+                            border: '1px solid #e0e0e0',
+                            borderRadius: '8px',
+                            outline: 'none',
+                            resize: 'vertical',
+                            fontFamily: 'inherit',
+                            lineHeight: '1.6'
+                          }}
+                        />
+                        <p style={{ fontSize: '12px', color: descriptionEn.length > 2000 ? '#dc2626' : '#999', marginTop: '8px' }}>
+                          Characters: {descriptionEn.length} / 2000
+                          {descriptionEn.length > 2000 && (
+                            <span style={{ color: '#dc2626', display: 'block', marginTop: '4px', fontWeight: '500' }}>
+                              ⚠️ Limit exceeded!
+                            </span>
+                          )}
+                        </p>
+                      </div>
                     </div>
                   </div>
 

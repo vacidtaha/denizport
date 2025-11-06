@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -26,12 +27,14 @@ interface Project {
   location: string;
   coverImage: string;
   description: string;
+  descriptionEn: string;
   types?: ProjectType[];
   galleryImages: string[];
   slug: string;
 }
 
 export default function DynamicProjectPage() {
+  const { language, t } = useLanguage();
   const params = useParams();
   const slug = params.slug as string;
   const [project, setProject] = useState<Project | null>(null);
@@ -143,7 +146,7 @@ export default function DynamicProjectPage() {
           <div className="flex justify-center w-full">
             <div className="max-w-3xl">
               <p className="text-left text-sm sm:text-base text-black leading-loose font-normal whitespace-pre-line">
-                {project.description}
+                {language === 'tr' ? project.description : project.descriptionEn}
               </p>
             </div>
           </div>
@@ -301,11 +304,10 @@ export default function DynamicProjectPage() {
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8 md:gap-0">
             <div className="max-w-2xl">
               <p className="text-white/60 text-xs font-light tracking-[0.3em] uppercase mb-4 md:mb-6">
-                SATIŞ OFİSİ
+                {t('project.salesOffice')}
               </p>
               <h3 className="text-white text-2xl sm:text-3xl md:text-5xl font-light leading-tight">
-                {project.name} hakkında<br />
-                detaylı bilgi alın
+                {project.name} {t('project.salesTitle')}
               </h3>
             </div>
             <a 
@@ -313,7 +315,7 @@ export default function DynamicProjectPage() {
               className="group inline-flex items-center gap-3 text-white text-xs sm:text-sm md:text-base"
             >
               <span className="font-light tracking-wide relative">
-                Satış Ofisimizle İletişime Geçin
+                {t('project.salesCta')}
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transition-all duration-300 group-hover:w-0"></span>
               </span>
               <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -324,7 +326,7 @@ export default function DynamicProjectPage() {
         {/* Galeri */}
         <div className="w-full bg-white" style={{ padding: '80px 24px' }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <h2 className="text-2xl md:text-3xl font-light mb-12">Proje Galerisi</h2>
+            <h2 className="text-2xl md:text-3xl font-light mb-12">{t('project.gallery')}</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: '16px' }}>
               {project.galleryImages.map((image, index) => (

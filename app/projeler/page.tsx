@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -15,6 +16,7 @@ interface Project {
 }
 
 export default function Projeler() {
+  const { t } = useLanguage();
   const [dynamicProjects, setDynamicProjects] = useState<Project[]>([]);
 
   useEffect(() => {
@@ -70,11 +72,10 @@ export default function Projeler() {
         >
           <div className="text-center max-w-4xl px-4 sm:px-6 md:px-8">
             <p className="text-white text-xs font-light tracking-[0.3em] uppercase mb-6 md:mb-8 opacity-80">
-              PROJELER
+              {t('projects.hero.tag')}
             </p>
             <h1 className="text-white text-3xl sm:text-4xl md:text-6xl font-light leading-tight">
-              Lüksün ve estetiğin<br />
-              buluştuğu projeler
+              {t('projects.hero.title')}
             </h1>
           </div>
         </div>
@@ -157,12 +158,10 @@ export default function Projeler() {
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8 md:gap-0">
             <div className="max-w-2xl">
               <p className="text-white/60 text-xs font-light tracking-[0.3em] uppercase mb-4 md:mb-6">
-                PROJELERİMİZ
+                {t('projects.cta.tag')}
               </p>
               <h3 className="text-white text-2xl sm:text-3xl md:text-5xl font-light leading-tight">
-                İlgilendiğiniz projelerimizin<br />
-                detaylarını görüşmek için<br />
-                bizimle iletişime geçin
+                {t('projects.cta.title')}
               </h3>
             </div>
             <a 
@@ -170,7 +169,7 @@ export default function Projeler() {
               className="group inline-flex items-center gap-3 text-white text-xs sm:text-sm md:text-base"
             >
               <span className="font-light tracking-wide relative">
-                İletişime Geçin
+                {t('projects.cta.button')}
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transition-all duration-300 group-hover:w-0"></span>
               </span>
               <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>

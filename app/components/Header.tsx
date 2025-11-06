@@ -80,7 +80,17 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
         <button
           onClick={() => setLanguage('tr')}
           className={`transition-all duration-300 ${
-            isContactPage || isServiceDetailPage ? 'text-black' : (scrolled && !isServicesMainPage && !isProjectsMainPage) ? 'text-black' : 'text-white'
+            isContactPage || isServiceDetailPage
+              ? language === 'tr'
+                ? 'text-black'
+                : 'text-gray-400 hover:text-gray-600'
+              : (scrolled && !isServicesMainPage && !isProjectsMainPage)
+              ? language === 'tr'
+                ? 'text-black'
+                : 'text-gray-400 hover:text-gray-600'
+              : language === 'tr'
+              ? 'text-white'
+              : 'text-white/50 hover:text-white/80'
           }`}
         >
           TR

@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function Iletisim() {
+  const { t } = useLanguage();
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -112,7 +114,7 @@ export default function Iletisim() {
             <div className="flex flex-col justify-center gap-8 md:gap-24" style={{ paddingLeft: 'clamp(0px, 4vw, 250px)' }}>
               {/* Adres */}
               <div>
-                <h3 className="text-xs sm:text-sm font-light tracking-wide text-gray-500 mb-3 md:mb-4 uppercase">Adres</h3>
+                <h3 className="text-xs sm:text-sm font-light tracking-wide text-gray-500 mb-3 md:mb-4 uppercase">{t('contact.address')}</h3>
                 <p className="text-base md:text-lg font-light text-gray-900 leading-relaxed">
                   Kazım Dirik Mah. Mustafa Kemal Cad. No: 51/1-A<br />
                   Bornova, İzmir
@@ -121,16 +123,16 @@ export default function Iletisim() {
 
               {/* İletişim */}
               <div>
-                <h3 className="text-xs sm:text-sm font-light tracking-wide text-gray-500 mb-3 md:mb-4 uppercase">İletişim</h3>
+                <h3 className="text-xs sm:text-sm font-light tracking-wide text-gray-500 mb-3 md:mb-4 uppercase">{t('contact.phone')}</h3>
                 <div className="space-y-1">
                   <p className="text-base md:text-lg font-light text-gray-900">
                     <a href="tel:+902323739012" className="hover:text-gray-600 transition-colors">
-                      0232 373 90 12
+                      +90 232 373 90 12
                     </a>
                   </p>
                   <p className="text-base md:text-lg font-light text-gray-900">
                     <a href="tel:+905326303111" className="hover:text-gray-600 transition-colors">
-                      0532 630 31 11
+                      +90 532 630 31 11
                     </a>
                   </p>
                   <p className="text-base md:text-lg font-light text-gray-900">

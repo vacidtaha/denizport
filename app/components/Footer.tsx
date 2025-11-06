@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="w-full" style={{ backgroundColor: '#1a0508', paddingTop: '40px', paddingBottom: '40px' }}>
       {/* Şirket Bağlantıları */}
@@ -8,12 +12,12 @@ export default function Footer() {
         <div className="relative w-full text-white" style={{ minHeight: 'auto' }}>
           {/* Şirket - Mobilde Sol, Masaüstünde Sağ */}
           <div className="relative md:absolute top-0 md:right-20 md:left-auto mb-8 md:mb-0" style={{ left: 'clamp(0px, 4vw, 120px)' }}>
-            <h4 className="text-base md:text-lg font-medium mb-3 md:mb-4">Şirket</h4>
+            <h4 className="text-base md:text-lg font-medium mb-3 md:mb-4">{t('footer.company')}</h4>
             <ul className="space-y-1 md:space-y-2">
-              <li><a href="/" className="text-xs md:text-sm font-light opacity-80 hover:opacity-100 transition-opacity">Ana Sayfa</a></li>
-              <li><a href="/projeler" className="text-xs md:text-sm font-light opacity-80 hover:opacity-100 transition-opacity">Projeler</a></li>
-              <li><a href="/hizmetler" className="text-xs md:text-sm font-light opacity-80 hover:opacity-100 transition-opacity">Hizmetler</a></li>
-              <li><a href="/iletisim" className="text-xs md:text-sm font-light opacity-80 hover:opacity-100 transition-opacity">İletişim</a></li>
+              <li><a href="/" className="text-xs md:text-sm font-light opacity-80 hover:opacity-100 transition-opacity">{t('nav.home')}</a></li>
+              <li><a href="/projeler" className="text-xs md:text-sm font-light opacity-80 hover:opacity-100 transition-opacity">{t('nav.projects')}</a></li>
+              <li><a href="/hizmetler" className="text-xs md:text-sm font-light opacity-80 hover:opacity-100 transition-opacity">{t('nav.services')}</a></li>
+              <li><a href="/iletisim" className="text-xs md:text-sm font-light opacity-80 hover:opacity-100 transition-opacity">{t('nav.contact')}</a></li>
             </ul>
           </div>
         </div>
@@ -35,8 +39,8 @@ export default function Footer() {
       <div className="relative text-white text-xs font-light flex flex-col md:flex-row md:justify-between md:items-start" style={{ paddingLeft: 'clamp(16px, 4vw, 96px)', paddingRight: 'clamp(16px, 4vw, 96px)' }}>
         {/* Copyright - Mobilde tam, Masaüstünde orta */}
         <div className="opacity-60 text-center md:text-left flex-1 mb-4 md:mb-0">
-          <p>© 2025 Denizport İnşaat Otomotiv A.Ş.</p>
-          <p className="mt-1 md:mt-2 text-xs">Tüm hakları saklıdır. Bu sitenin tüm içeriği telif hakkı ile korunmaktadır.</p>
+          <p>{t('footer.copyright')}</p>
+          <p className="mt-1 md:mt-2 text-xs">{t('footer.rights')}</p>
         </div>
 
         {/* Sosyal Medya - Mobilde alt, masaüstüde sağ */}
