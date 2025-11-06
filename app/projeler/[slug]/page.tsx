@@ -217,49 +217,49 @@ export default function DynamicProjectPage() {
                     <div className="grid grid-cols-2 gap-4 md:gap-x-8 md:gap-y-5">
                       {project.types[selectedTypeIndex].brutAlan && (
                         <div>
-                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">BRÜT ALAN (m²)</p>
+                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.brutAlan')}</p>
                           <p className="text-base md:text-lg font-normal text-black">{project.types[selectedTypeIndex].brutAlan}</p>
                         </div>
                       )}
                       {project.types[selectedTypeIndex].netAlan && (
                         <div>
-                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">NET ALAN (m²)</p>
+                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.netAlan')}</p>
                           <p className="text-base md:text-lg font-normal text-black">{project.types[selectedTypeIndex].netAlan}</p>
                         </div>
                       )}
                       {project.types[selectedTypeIndex].odaSayisi && (
                         <div>
-                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">ODA DÜZENİ</p>
+                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.odaDuzeni')}</p>
                           <p className="text-base md:text-lg font-normal text-black">{project.types[selectedTypeIndex].odaSayisi}</p>
                         </div>
                       )}
                       {project.types[selectedTypeIndex].yatak && (
                         <div>
-                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">YATAK ODASI</p>
+                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.yatakOdasi')}</p>
                           <p className="text-base md:text-lg font-normal text-black">{project.types[selectedTypeIndex].yatak}</p>
                         </div>
                       )}
                       {project.types[selectedTypeIndex].banyo && (
                         <div>
-                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">BANYO</p>
+                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.banyo')}</p>
                           <p className="text-base md:text-lg font-normal text-black">{project.types[selectedTypeIndex].banyo}</p>
                         </div>
                       )}
                       {project.types[selectedTypeIndex].teras && (
                         <div>
-                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">TERAS (m²)</p>
+                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.teras')}</p>
                           <p className="text-base md:text-lg font-normal text-black">{project.types[selectedTypeIndex].teras}</p>
                         </div>
                       )}
                       {project.types[selectedTypeIndex].bahce && (
                         <div>
-                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">BAHÇE (m²)</p>
+                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.bahce')}</p>
                           <p className="text-base md:text-lg font-normal text-black">{project.types[selectedTypeIndex].bahce}</p>
                         </div>
                       )}
                       {project.types[selectedTypeIndex].otopark && (
                         <div>
-                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">OTOPARK</p>
+                          <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.otopark')}</p>
                           <p className="text-base md:text-lg font-normal text-black">{project.types[selectedTypeIndex].otopark}</p>
                         </div>
                       )}
@@ -268,7 +268,7 @@ export default function DynamicProjectPage() {
                     {/* Özellikler */}
                     {project.types[selectedTypeIndex].features && project.types[selectedTypeIndex].features.length > 0 && (
                       <div style={{ marginTop: '48px' }}>
-                        <h4 className="text-xs font-light text-gray-400 mb-4 tracking-wide">ÖZELLİKLER</h4>
+                        <h4 className="text-xs font-light text-gray-400 mb-4 tracking-wide">{t('project.type.ozellikler')}</h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                           {project.types[selectedTypeIndex].features.map((feature, idx) => (
                             feature && (

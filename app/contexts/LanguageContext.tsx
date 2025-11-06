@@ -114,6 +114,20 @@ const translations = {
     'project.salesCta': 'Satış Ofisimizle İletişime Geçin',
     'project.salesTitle': 'hakkında detaylı bilgi alın',
     'project.gallery': 'Proje Galerisi',
+    'project.type.brutAlan': 'BRÜT ALAN (m²)',
+    'project.type.netAlan': 'NET ALAN (m²)',
+    'project.type.odaDuzeni': 'ODA DÜZENİ',
+    'project.type.yatakOdasi': 'YATAK ODASI',
+    'project.type.banyo': 'BANYO',
+    'project.type.teras': 'TERAS (m²)',
+    'project.type.bahce': 'BAHÇE (m²)',
+    'project.type.otopark': 'OTOPARK',
+    'project.type.ozellikler': 'ÖZELLİKLER',
+    
+    // Taşevler Proje Açıklaması
+    'tasevler.p1': 'Bu özel proje, yatay mimari yaklaşımı, taş ve doğal dokularla harmanlanan sofistike hatları ve geniş cam yüzeyleriyle ferah, şık ve zamansız bir yaşam alanı sunuyor. Teraslı bahçeler, özel açık alanlar ve panoramik peyzaj tasarımıyla her bir birim kendine ait ayrıcalıklı bir yaşam sunarken, güneş ışığının gün boyu içeri süzüldüğü geniş yaşam alanları modern konforu doğanın huzuruyla buluşturuyor.',
+    'tasevler.p2': 'Her detay titizlikle düşünülmüş; doğaltaş duvarlardan peyzajın akışını takip eden yumuşak merdiven hatlarına, gizli aydınlatmalardan özel oturma alanlarına kadar her unsur, sakin ve prestijli bir atmosfer yaratıyor. Sessizlik, mahremiyet ve yüksek yaşam standardı bu projede lüksün doğal haline dönüşüyor.',
+    'tasevler.p3': 'Hem yaşam alanı hem de yatırım değeri açısından öne çıkan proje, yükselen bir bölgede seçkin bir yaşam vadederken sınırlı sayıda birimle gerçek anlamda ayrıcalıklı bir deneyim sunuyor. Şehrin karmaşasından uzak, doğanın içinde; ancak elit sosyal yaşam ve ulaşım akslarına bir adım mesafede.',
     
     // Footer
     'footer.company': 'Şirket',
@@ -228,6 +242,20 @@ const translations = {
     'project.salesCta': 'Contact Our Sales Office',
     'project.salesTitle': 'for detailed information',
     'project.gallery': 'Project Gallery',
+    'project.type.brutAlan': 'GROSS AREA (m²)',
+    'project.type.netAlan': 'NET AREA (m²)',
+    'project.type.odaDuzeni': 'ROOM LAYOUT',
+    'project.type.yatakOdasi': 'BEDROOMS',
+    'project.type.banyo': 'BATHROOMS',
+    'project.type.teras': 'TERRACE (m²)',
+    'project.type.bahce': 'GARDEN (m²)',
+    'project.type.otopark': 'PARKING',
+    'project.type.ozellikler': 'FEATURES',
+    
+    // Taşevler Proje Açıklaması (EN)
+    'tasevler.p1': 'This special project offers a spacious, elegant and timeless living space with its horizontal architectural approach, sophisticated lines blended with stone and natural textures, and large glass surfaces. While each unit offers a privileged life of its own with terraced gardens, private open spaces and panoramic landscape design, the spacious living areas where sunlight filters in throughout the day bring modern comfort together with the peace of nature.',
+    'tasevler.p2': 'Every detail has been carefully considered; every element, from natural stone walls to soft staircase lines that follow the flow of the landscape, from hidden lighting to special seating areas, creates a calm and prestigious atmosphere. Silence, privacy and high living standards become the natural state of luxury in this project.',
+    'tasevler.p3': 'The project, which stands out in terms of both living space and investment value, offers a truly exclusive experience with a limited number of units while promising a distinguished life in a rising region. Away from the chaos of the city, in the heart of nature; but just a step away from elite social life and transportation axes.',
     
     // Footer
     'footer.company': 'Company',

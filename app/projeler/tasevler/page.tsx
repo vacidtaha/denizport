@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 export default function TasevlerDetay() {
+  const { language, t } = useLanguage();
   const [selectedTip, setSelectedTip] = useState<'daire' | 'dublex-ust' | 'dublex-alt'>('daire');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -135,13 +137,13 @@ export default function TasevlerDetay() {
           <div className="flex justify-center w-full px-4 sm:px-6 md:px-8">
             <div className="max-w-3xl" style={{ paddingLeft: 'clamp(16px, 4vw, 0px)', paddingRight: 'clamp(16px, 4vw, 0px)' }}>
               <p className="text-left text-sm sm:text-base text-black leading-loose font-normal mb-6 md:mb-8">
-                Bu özel proje, yatay mimari yaklaşımı, taş ve doğal dokularla harmanlanan sofistike hatları ve geniş cam yüzeyleriyle ferah, şık ve zamansız bir yaşam alanı sunuyor. Teraslı bahçeler, özel açık alanlar ve panoramik peyzaj tasarımıyla her bir birim kendine ait ayrıcalıklı bir yaşam sunarken, güneş ışığının gün boyu içeri süzüldüğü geniş yaşam alanları modern konforu doğanın huzuruyla buluşturuyor.
+                {t('tasevler.p1')}
               </p>
               <p className="text-left text-sm sm:text-base text-black leading-loose font-normal mb-6 md:mb-8">
-                Her detay titizlikle düşünülmüş; doğaltaş duvarlardan peyzajın akışını takip eden yumuşak merdiven hatlarına, gizli aydınlatmalardan özel oturma alanlarına kadar her unsur, sakin ve prestijli bir atmosfer yaratıyor. Sessizlik, mahremiyet ve yüksek yaşam standardı bu projede lüksün doğal haline dönüşüyor.
+                {t('tasevler.p2')}
               </p>
               <p className="text-left text-sm sm:text-base text-black leading-loose font-normal">
-                Hem yaşam alanı hem de yatırım değeri açısından öne çıkan proje, yükselen bir bölgede seçkin bir yaşam vadederken sınırlı sayıda birimle gerçek anlamda ayrıcalıklı bir deneyim sunuyor. Şehrin karmaşasından uzak, doğanın içinde; ancak elit sosyal yaşam ve ulaşım akslarına bir adım mesafede.
+                {t('tasevler.p3')}
               </p>
             </div>
           </div>
@@ -212,35 +214,35 @@ export default function TasevlerDetay() {
                   {/* Teknik Bilgiler Grid */}
                   <div className="grid grid-cols-2 gap-4 md:gap-x-8 md:gap-y-5">
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">BRÜT ALAN (m²)</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.brutAlan')}</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].brutAlan}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">NET ALAN (m²)</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.netAlan')}</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].netAlan}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">ODA DÜZENİ</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.odaDuzeni')}</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].odaSayisi}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">YATAK ODASI</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.yatakOdasi')}</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].yatak}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">BANYO</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.banyo')}</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].banyo}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">TERAS (m²)</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.teras')}</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].teras}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">BAHÇE (m²)</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.bahce')}</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].bahce}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">OTOPARK</p>
+                      <p className="text-xs font-light text-gray-400 mb-1 md:mb-2 tracking-wide">{t('project.type.otopark')}</p>
                       <p className="text-base md:text-lg font-normal text-black">{tipBilgileri[selectedTip].otopark}</p>
                     </div>
                   </div>
@@ -264,11 +266,10 @@ export default function TasevlerDetay() {
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8 md:gap-0">
             <div className="max-w-2xl">
               <p className="text-white/60 text-xs font-light tracking-[0.3em] uppercase mb-4 md:mb-6">
-                SATIŞ OFİSİ
+                {t('project.salesOffice')}
               </p>
               <h3 className="text-white text-2xl sm:text-3xl md:text-5xl font-light leading-tight">
-                Dereköy Taş Evler hakkında<br />
-                detaylı bilgi alın
+                Dereköy Taş Evler {t('project.salesTitle')}
               </h3>
             </div>
             <a 
@@ -276,7 +277,7 @@ export default function TasevlerDetay() {
               className="group inline-flex items-center gap-3 text-white text-xs sm:text-sm md:text-base"
             >
               <span className="font-light tracking-wide relative">
-                Satış Ofisimizle İletişime Geçin
+                {t('project.salesCta')}
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transition-all duration-300 group-hover:w-0"></span>
               </span>
               <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -289,7 +290,7 @@ export default function TasevlerDetay() {
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             {/* Başlık */}
             <h2 className="text-3xl md:text-4xl font-light" style={{ marginBottom: '48px' }}>
-              Proje Galerisi
+              {t('project.gallery')}
             </h2>
 
             {/* Galeri Grid */}
