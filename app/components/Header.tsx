@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface HeaderProps {
   alwaysVisible?: boolean;
@@ -10,7 +11,7 @@ interface HeaderProps {
 
 export default function Header({ alwaysVisible = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(alwaysVisible);
-  const [language, setLanguage] = useState<'tr' | 'en'>('tr');
+  const { language, setLanguage, t } = useLanguage();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
   const isContactPage = pathname === '/iletisim';
@@ -126,7 +127,7 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
               }`}
               style={{ transitionDelay: sidebarOpen ? "100ms" : "0ms" }}
             >
-              Ana Sayfa
+              {t('nav.home')}
             </a>
             <a 
               href="/projeler" 
@@ -135,7 +136,7 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
               }`}
               style={{ transitionDelay: sidebarOpen ? "200ms" : "0ms" }}
             >
-              Projeler
+              {t('nav.projects')}
             </a>
             <a 
               href="/hizmetler" 
@@ -144,7 +145,7 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
               }`}
               style={{ transitionDelay: sidebarOpen ? "300ms" : "0ms" }}
             >
-              Hizmetler
+              {t('nav.services')}
             </a>
             <a 
               href="/iletisim" 
@@ -153,7 +154,7 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
               }`}
               style={{ transitionDelay: sidebarOpen ? "400ms" : "0ms" }}
             >
-              İletişim
+              {t('nav.contact')}
             </a>
           </nav>
         </div>

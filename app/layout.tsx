@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import StructuredData from "./components/StructuredData";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 export const metadata: Metadata = {
   title: {
@@ -73,8 +74,10 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className="antialiased overflow-x-hidden">
-        <StructuredData />
-        {children}
+        <LanguageProvider>
+          <StructuredData />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
