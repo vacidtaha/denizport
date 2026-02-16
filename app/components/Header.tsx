@@ -21,7 +21,7 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
 
   useEffect(() => {
     if (alwaysVisible) return;
-    
+
     const handleScroll = () => {
       // Hero'nun yarısına gelince header açılsın
       const heroHeight = window.innerHeight;
@@ -37,25 +37,24 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
       {/* Header Arka Planı - SCROLL YAPINCA BELİRİYOR */}
       {!sidebarOpen && (
         <div
-          className={`hidden md:block fixed top-0 left-0 right-0 h-20 z-[50] transition-all duration-500 ease-in-out pointer-events-none ${
-            (scrolled && !isServicesMainPage && !isProjectsMainPage)
-              ? "bg-white/95 backdrop-blur-md"
-              : "bg-transparent"
-          }`}
+          className={`hidden md:block fixed top-0 left-0 right-0 h-20 z-[50] transition-all duration-500 ease-in-out pointer-events-none ${(scrolled && !isServicesMainPage && !isProjectsMainPage)
+            ? "bg-white/95 backdrop-blur-md"
+            : "bg-transparent"
+            }`}
         />
       )}
 
       {/* Hamburger Menü - SABİT Sol Üstte */}
       {!sidebarOpen && (
-        <button 
+        <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
           className="absolute md:fixed top-3 sm:top-4 left-4 md:left-12 z-[70] flex items-center justify-center w-12 sm:w-14 h-12 sm:h-14 rounded-full hover:bg-white/10 transition-all duration-300 pointer-events-auto"
         >
-        <div className="flex flex-col gap-[5px]">
-          <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage && !isProjectsMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
-          <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage && !isProjectsMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
-          <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage && !isProjectsMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
-        </div>
+          <div className="flex flex-col gap-[5px]">
+            <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage && !isProjectsMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
+            <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage && !isProjectsMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
+            <span className={`w-6 sm:w-7 h-[2px] rounded-full transition-all duration-300 ${(isContactPage || isServiceDetailPage || (scrolled && !isServicesMainPage && !isProjectsMainPage)) ? "bg-black drop-shadow-none" : "bg-white drop-shadow-lg"}`}></span>
+          </div>
         </button>
       )}
 
@@ -77,91 +76,83 @@ export default function Header({ alwaysVisible = false }: HeaderProps) {
       {/* Dil Seçeneği - SABİT Sağ Üstte */}
       {!sidebarOpen && (
         <div className="absolute md:fixed top-3 sm:top-4 md:top-5 md:top-7 right-4 sm:right-8 md:right-12 z-[70] flex items-center gap-1 text-xs sm:text-sm font-medium pointer-events-auto">
-        <button
-          onClick={() => setLanguage('tr')}
-          className={`transition-all duration-300 ${
-            isContactPage || isServiceDetailPage
+          <button
+            onClick={() => setLanguage('tr')}
+            className={`transition-all duration-300 ${isContactPage || isServiceDetailPage
               ? language === 'tr'
                 ? 'text-black'
                 : 'text-gray-400 hover:text-gray-600'
               : (scrolled && !isServicesMainPage && !isProjectsMainPage)
-              ? language === 'tr'
-                ? 'text-black'
-                : 'text-gray-400 hover:text-gray-600'
-              : language === 'tr'
-              ? 'text-white'
-              : 'text-white/50 hover:text-white/80'
-          }`}
-        >
-          TR
-        </button>
-        <span className={`${
-          isContactPage || isServiceDetailPage
+                ? language === 'tr'
+                  ? 'text-black'
+                  : 'text-gray-400 hover:text-gray-600'
+                : language === 'tr'
+                  ? 'text-white'
+                  : 'text-white/50 hover:text-white/80'
+              }`}
+          >
+            TR
+          </button>
+          <span className={`${isContactPage || isServiceDetailPage
             ? 'text-gray-400'
             : (scrolled && !isServicesMainPage && !isProjectsMainPage) ? 'text-gray-300' : 'text-white/40'
-        }`}>/</span>
-        <button
-          onClick={() => setLanguage('en')}
-          className={`transition-all duration-300 ${
-            isContactPage || isServiceDetailPage
+            }`}>/</span>
+          <button
+            onClick={() => setLanguage('en')}
+            className={`transition-all duration-300 ${isContactPage || isServiceDetailPage
               ? language === 'en'
                 ? 'text-black'
                 : 'text-gray-400 hover:text-gray-600'
               : (scrolled && !isServicesMainPage && !isProjectsMainPage)
-              ? language === 'en'
-                ? 'text-black'
-                : 'text-gray-400 hover:text-gray-600'
-              : language === 'en'
-              ? 'text-white'
-              : 'text-white/50 hover:text-white/80'
-          }`}
-        >
-          EN
-        </button>
+                ? language === 'en'
+                  ? 'text-black'
+                  : 'text-gray-400 hover:text-gray-600'
+                : language === 'en'
+                  ? 'text-white'
+                  : 'text-white/50 hover:text-white/80'
+              }`}
+          >
+            EN
+          </button>
         </div>
       )}
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full bg-white shadow-2xl z-[45] transition-transform duration-500 ease-in-out ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 h-full bg-white shadow-2xl z-[45] transition-transform duration-500 ease-in-out ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
         style={{ width: "clamp(280px, 80vw, 400px)" }}
       >
         <div className="flex flex-col items-center justify-center h-full px-6 sm:px-12">
           <nav className="flex flex-col items-start gap-6 sm:gap-8">
-            <a 
-              href="/" 
-              className={`relative text-lg sm:text-2xl font-light text-black before:content-[''] before:absolute before:-left-5 sm:before:-left-6 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-black before:rounded-full before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 transition-opacity duration-500 ${
-                sidebarOpen ? "opacity-100" : "opacity-0"
-              }`}
+            <a
+              href="/"
+              className={`relative text-lg sm:text-2xl font-light text-black before:content-[''] before:absolute before:-left-5 sm:before:-left-6 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-black before:rounded-full before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 transition-opacity duration-500 ${sidebarOpen ? "opacity-100" : "opacity-0"
+                }`}
               style={{ transitionDelay: sidebarOpen ? "100ms" : "0ms" }}
             >
               {t('nav.home')}
             </a>
-            <a 
-              href="/projeler" 
-              className={`relative text-lg sm:text-2xl font-light text-black before:content-[''] before:absolute before:-left-5 sm:before:-left-6 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-black before:rounded-full before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 transition-opacity duration-500 ${
-                sidebarOpen ? "opacity-100" : "opacity-0"
-              }`}
+            <a
+              href="/projeler"
+              className={`relative text-lg sm:text-2xl font-light text-black before:content-[''] before:absolute before:-left-5 sm:before:-left-6 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-black before:rounded-full before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 transition-opacity duration-500 ${sidebarOpen ? "opacity-100" : "opacity-0"
+                }`}
               style={{ transitionDelay: sidebarOpen ? "200ms" : "0ms" }}
             >
               {t('nav.projects')}
             </a>
-            <a 
-              href="/hizmetler" 
-              className={`relative text-lg sm:text-2xl font-light text-black before:content-[''] before:absolute before:-left-5 sm:before:-left-6 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-black before:rounded-full before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 transition-opacity duration-500 ${
-                sidebarOpen ? "opacity-100" : "opacity-0"
-              }`}
+            <a
+              href="/hizmetler"
+              className={`relative text-lg sm:text-2xl font-light text-black before:content-[''] before:absolute before:-left-5 sm:before:-left-6 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-black before:rounded-full before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 transition-opacity duration-500 ${sidebarOpen ? "opacity-100" : "opacity-0"
+                }`}
               style={{ transitionDelay: sidebarOpen ? "300ms" : "0ms" }}
             >
               {t('nav.services')}
             </a>
-            <a 
-              href="/iletisim" 
-              className={`relative text-lg sm:text-2xl font-light text-black before:content-[''] before:absolute before:-left-5 sm:before:-left-6 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-black before:rounded-full before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 transition-opacity duration-500 ${
-                sidebarOpen ? "opacity-100" : "opacity-0"
-              }`}
+            <a
+              href="/iletisim"
+              className={`relative text-lg sm:text-2xl font-light text-black before:content-[''] before:absolute before:-left-5 sm:before:-left-6 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-black before:rounded-full before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 transition-opacity duration-500 ${sidebarOpen ? "opacity-100" : "opacity-0"
+                }`}
               style={{ transitionDelay: sidebarOpen ? "400ms" : "0ms" }}
             >
               {t('nav.contact')}
