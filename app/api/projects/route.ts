@@ -2,6 +2,11 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
+
+export const runtime = 'nodejs';
+
 const projectsFilePath = path.join(process.cwd(), 'public', 'projects.json');
 const projectsDir = path.join(process.cwd(), 'public', 'projects');
 
